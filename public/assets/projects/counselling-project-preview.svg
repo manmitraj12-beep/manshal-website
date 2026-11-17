@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1528" />
+      <stop offset="50%" stop-color="#0F1E36" />
+      <stop offset="100%" stop-color="#091322" />
+    </linearGradient>
+    <linearGradient id="accentTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#162642" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0E1A2F" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Main Canvas Background -->
+  <rect width="1200" height="750" fill="url(#bgGrad)" />
+
+  <!-- Ambient Soft Lighting -->
+  <circle cx="950" cy="220" r="220" fill="#06B6D4" opacity="0.14" filter="url(#softGlow)" />
+  <circle cx="250" cy="450" r="240" fill="#2563EB" opacity="0.14" filter="url(#softGlow)" />
+
+  <!-- Top Navigation Bar inside the Counselling Website -->
+  <rect x="0" y="0" width="1200" height="72" fill="#0A1220" opacity="0.85" />
+  <line x1="0" y1="72" x2="1200" y2="72" stroke="#1E293B" stroke-width="1" />
+
+  <!-- Brand Mark inside Preview -->
+  <rect x="64" y="22" width="28" height="28" rx="8" fill="url(#accentTeal)" />
+  <path d="M73 36 L78 41 L86 31" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="104" y="41" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="16" letter-spacing="0.5">PATHWAY COUNSELLING</text>
+
+  <!-- Nav Items -->
+  <text x="540" y="41" fill="#E2E8F0" font-family="Inter, sans-serif" font-weight="500" font-size="13">Programs</text>
+  <text x="630" y="41" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="500" font-size="13">Career Guidance</text>
+  <text x="765" y="41" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="500" font-size="13">Mentors</text>
+  <text x="850" y="41" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="500" font-size="13">Resources</text>
+
+  <!-- Book Session CTA -->
+  <rect x="990" y="20" width="146" height="34" rx="17" fill="url(#accentTeal)" />
+  <text x="1063" y="41" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="12" text-anchor="middle">Book Consultation</text>
+
+  <!-- Hero Content Column (Left) -->
+  <rect x="64" y="128" width="215" height="28" rx="14" fill="#132847" stroke="#06B6D4" stroke-opacity="0.4" />
+  <circle cx="80" cy="142" r="4" fill="#06B6D4" />
+  <text x="94" y="146" fill="#38BDF8" font-family="Inter, sans-serif" font-weight="600" font-size="11" letter-spacing="0.6">PERSONALIZED GUIDANCE</text>
+
+  <text x="64" y="205" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.8">Clarity &amp; Direction for</text>
+  <text x="64" y="255" fill="#38BDF8" font-family="Inter, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.8">Every Stage of Growth.</text>
+
+  <text x="64" y="302" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="400" font-size="15">Structured one-on-one counselling, academic pathway planning,</text>
+  <text x="64" y="326" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="400" font-size="15">and confidential support designed around individual goals.</text>
+
+  <!-- Primary & Secondary Buttons -->
+  <rect x="64" y="362" width="185" height="46" rx="10" fill="url(#accentTeal)" />
+  <text x="156" y="390" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="14" text-anchor="middle">Schedule a Session</text>
+
+  <rect x="265" y="362" width="170" height="46" rx="10" fill="#111F36" stroke="#334155" />
+  <text x="350" y="390" fill="#E2E8F0" font-family="Inter, sans-serif" font-weight="500" font-size="14" text-anchor="middle">Explore Programs</text>
+
+  <!-- Right Interactive Booking & Assessment Panel -->
+  <rect x="650" y="118" width="486" height="330" rx="18" fill="url(#cardGrad)" stroke="#1E3A5F" stroke-width="1.5" />
+  <text x="684" y="158" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="16">Session Pathway Selector</text>
+  <rect x="1010" y="140" width="96" height="24" rx="12" fill="#06B6D4" fill-opacity="0.15" />
+  <text x="1058" y="156" fill="#22D3EE" font-family="Inter, sans-serif" font-weight="600" font-size="11" text-anchor="middle">Live Portal</text>
+
+  <!-- 3 Pathway Cards inside Panel -->
+  <rect x="684" y="180" width="418" height="68" rx="12" fill="#0B1528" stroke="#2563EB" stroke-opacity="0.6" />
+  <circle cx="716" cy="214" r="16" fill="#2563EB" fill-opacity="0.2" />
+  <circle cx="716" cy="214" r="6" fill="#3B82F6" />
+  <text x="746" y="209" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="14">Academic &amp; Admissions Counselling</text>
+  <text x="746" y="229" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Course selection, university roadmap &amp; application guidance</text>
+
+  <rect x="684" y="260" width="418" height="68" rx="12" fill="#0B1528" stroke="#1E293B" />
+  <circle cx="716" cy="294" r="16" fill="#06B6D4" fill-opacity="0.15" />
+  <circle cx="716" cy="294" r="6" fill="#06B6D4" />
+  <text x="746" y="289" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="14">Career Transition &amp; Skill Mapping</text>
+  <text x="746" y="309" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Structured aptitude evaluation and professional mentoring</text>
+
+  <rect x="684" y="340" width="418" height="68" rx="12" fill="#0B1528" stroke="#1E293B" />
+  <circle cx="716" cy="374" r="16" fill="#38BDF8" fill-opacity="0.15" />
+  <circle cx="716" cy="374" r="6" fill="#38BDF8" />
+  <text x="746" y="369" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="14">1-on-1 Personal Guidance Sessions</text>
+  <text x="746" y="389" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Flexible online &amp; in-person consultation scheduling</text>
+
+  <!-- Bottom 3 Feature Cards Section -->
+  <rect x="64" y="486" width="340" height="196" rx="16" fill="url(#cardGrad)" stroke="#1E293B" />
+  <rect x="92" y="514" width="42" height="42" rx="10" fill="#2563EB" fill-opacity="0.2" />
+  <text x="92" y="586" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="17">Structured Roadmaps</text>
+  <text x="92" y="614" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Step-by-step milestone tracking tailored</text>
+  <text x="92" y="634" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">to each student and client profile.</text>
+
+  <rect x="430" y="486" width="340" height="196" rx="16" fill="url(#cardGrad)" stroke="#1E293B" />
+  <rect x="458" y="514" width="42" height="42" rx="10" fill="#06B6D4" fill-opacity="0.2" />
+  <text x="458" y="586" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="17">Seamless Enquiry Flow</text>
+  <text x="458" y="614" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Direct appointment requests with clear</text>
+  <text x="458" y="634" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">category selection and fast follow-ups.</text>
+
+  <rect x="796" y="486" width="340" height="196" rx="16" fill="url(#cardGrad)" stroke="#1E293B" />
+  <rect x="824" y="514" width="42" height="42" rx="10" fill="#3B82F6" fill-opacity="0.2" />
+  <text x="824" y="586" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="17">Accessible &amp; Responsive</text>
+  <text x="824" y="614" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Optimized for mobile phones, tablets</text>
+  <text x="824" y="634" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">and desktop browsers alike.</text>
+</svg>

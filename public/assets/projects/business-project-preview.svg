@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgBiz" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B14" />
+      <stop offset="55%" stop-color="#0C1426" />
+      <stop offset="100%" stop-color="#070B14" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="panelBiz" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#131F38" />
+      <stop offset="100%" stop-color="#0B1222" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgBiz)" />
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1E293B" stroke-width="1" opacity="0.45">
+    <line x1="0" y1="70" x2="1200" y2="70" />
+    <line x1="64" y1="0" x2="64" y2="750" />
+    <line x1="1136" y1="0" x2="1136" y2="750" />
+  </g>
+
+  <!-- Header -->
+  <rect x="92" y="22" width="30" height="26" rx="6" fill="url(#blueGrad)" />
+  <text x="134" y="40" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="15" letter-spacing="1">VERTEX ENTERPRISE</text>
+  <text x="480" y="40" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="13">Solutions</text>
+  <text x="570" y="40" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Industries</text>
+  <text x="665" y="40" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">About</text>
+  <text x="740" y="40" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Contact</text>
+  <rect x="975" y="19" width="132" height="32" rx="8" fill="#2563EB" />
+  <text x="1041" y="39" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="12" text-anchor="middle">Request a Quote</text>
+
+  <!-- Center Hero Banner -->
+  <rect x="440" y="114" width="320" height="28" rx="14" fill="#111C33" stroke="#2563EB" stroke-opacity="0.5" />
+  <text x="600" y="132" fill="#60A5FA" font-family="Inter, sans-serif" font-weight="600" font-size="11" text-anchor="middle" letter-spacing="0.8">MODERN BUSINESS INFRASTRUCTURE</text>
+
+  <text x="600" y="192" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="42" text-anchor="middle" letter-spacing="-1">Built for Operational Clarity</text>
+  <text x="600" y="242" fill="#38BDF8" font-family="Inter, sans-serif" font-weight="700" font-size="42" text-anchor="middle" letter-spacing="-1">&amp; Sustainable Brand Growth</text>
+
+  <text x="600" y="286" fill="#94A3B8" font-family="Inter, sans-serif" font-size="15" text-anchor="middle">A cohesive digital platform showcasing core services, company capabilities, and streamlined</text>
+  <text x="600" y="308" fill="#94A3B8" font-family="Inter, sans-serif" font-size="15" text-anchor="middle">client onboarding across desktop and mobile devices.</text>
+
+  <!-- Showcase Dashboard / Bento Grid -->
+  <rect x="92" y="352" width="650" height="340" rx="16" fill="url(#panelBiz)" stroke="#1E293B" stroke-width="1.5" />
+  <text x="124" y="394" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="16">Service &amp; Operations Overview</text>
+  <text x="124" y="418" fill="#64748B" font-family="Inter, sans-serif" font-size="12">Structured presentation of core business verticals</text>
+
+  <!-- Analytic Bars / Visual UI blocks inside left bento -->
+  <rect x="124" y="446" width="180" height="105" rx="12" fill="#0A101E" stroke="#1E293B" />
+  <text x="144" y="476" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Service Architecture</text>
+  <rect x="144" y="494" width="110" height="8" rx="4" fill="url(#blueGrad)" />
+  <rect x="144" y="512" width="140" height="8" rx="4" fill="#1E293B" />
+
+  <rect x="324" y="446" width="180" height="105" rx="12" fill="#0A101E" stroke="#1E293B" />
+  <text x="344" y="476" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Client Onboarding</text>
+  <rect x="344" y="494" width="130" height="8" rx="4" fill="#06B6D4" />
+  <rect x="344" y="512" width="95" height="8" rx="4" fill="#1E293B" />
+
+  <rect x="524" y="446" width="186" height="105" rx="12" fill="#0A101E" stroke="#1E293B" />
+  <text x="544" y="476" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Responsive Reach</text>
+  <rect x="544" y="494" width="140" height="8" rx="4" fill="#3B82F6" />
+  <rect x="544" y="512" width="115" height="8" rx="4" fill="#1E293B" />
+
+  <!-- Lower Bar inside Left Bento -->
+  <rect x="124" y="572" width="586" height="92" rx="12" fill="#0A101E" stroke="#2563EB" stroke-opacity="0.35" />
+  <text x="152" y="608" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="15">Direct Enquiry &amp; Consultation Integration</text>
+  <text x="152" y="634" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Visitors can explore tailored solutions and connect directly via email or WhatsApp.</text>
+  <rect x="560" y="598" width="124" height="38" rx="8" fill="url(#blueGrad)" />
+  <text x="622" y="622" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="12" text-anchor="middle">Get in Touch</text>
+
+  <!-- Right Bento Column -->
+  <rect x="768" y="352" width="340" height="160" rx="16" fill="url(#panelBiz)" stroke="#1E293B" stroke-width="1.5" />
+  <circle cx="812" cy="398" r="18" fill="#2563EB" fill-opacity="0.2" />
+  <text x="844" y="403" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="15">Fast Performance</text>
+  <text x="794" y="442" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Engineered with clean assets, semantic</text>
+  <text x="794" y="464" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">HTML markup and smooth navigation.</text>
+
+  <rect x="768" y="532" width="340" height="160" rx="16" fill="url(#panelBiz)" stroke="#1E293B" stroke-width="1.5" />
+  <circle cx="812" cy="578" r="18" fill="#06B6D4" fill-opacity="0.2" />
+  <text x="844" y="583" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="15">Brand Consistency</text>
+  <text x="794" y="622" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Cohesive typography, color hierarchy and</text>
+  <text x="794" y="644" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">trust-building visual presentation.</text>
+</svg>
