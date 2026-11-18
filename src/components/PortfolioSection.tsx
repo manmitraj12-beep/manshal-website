@@ -196,7 +196,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onInquirePro
                         >
                           <img
                             src={project.screenshotUrl}
-                            alt={project.title}
+                            alt={`${project.title} — ${project.category} by MANSHAL`}
                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                             loading="lazy"
                           />
@@ -369,7 +369,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onInquirePro
                   </div>
                   <img
                     src={selectedProject.screenshotUrl}
-                    alt={selectedProject.title}
+                    alt={`${selectedProject.title} — ${selectedProject.category} by MANSHAL`}
                     className="w-full h-auto object-contain bg-[#070B14]"
                   />
                 </div>

@@ -144,9 +144,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           className="mt-12 rounded-2xl p-6 sm:p-8 bg-[#0B1220]/90 border border-white/[0.08] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
         >
           <div className="space-y-1">
-            <h4 className="font-display text-base sm:text-lg font-semibold text-white">
+            <h3 className="font-display text-base sm:text-lg font-semibold text-white">
               Specialized Industry &amp; Digital Transformation Solutions
-            </h4>
+            </h3>
             <p className="text-sm text-[#A1AAB8]">
               We also partner with institutions and growing enterprises across specialized domains:
             </p>
