@@ -7,7 +7,8 @@ import {
   ExternalLink,
   ArrowRight,
   Mail,
-  MessageCircle,
+  Phone,
+  ShieldCheck,
 } from 'lucide-react';
 import { SITE_CONFIG } from '../config/siteConfig';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
@@ -24,10 +25,6 @@ export const FounderSection: React.FC = () => {
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
-
-  const whatsappUrl = `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(
-    contact.whatsappPrefilledText
-  )}`;
 
   return (
     <section
@@ -66,8 +63,80 @@ export const FounderSection: React.FC = () => {
           </p>
         </motion.div>
 
+        {/* Leadership & Business Registration Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 rounded-2xl p-6 sm:p-8 bg-[#070B14] border border-white/10 shadow-glass space-y-6"
+        >
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
+              Leadership
+            </h3>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#06B6D4]">
+              MANSHAL
+            </span>
+          </div>
+
+          {/* Leadership Profiles: 1. Shailesh Sir (above) 2. Manmit Raj (below) */}
+          <div className="space-y-4">
+            {founder.leadership.map((leader, index) => (
+              <div
+                key={leader.name}
+                className="p-5 sm:p-6 rounded-xl bg-[#0B1220] border border-white/[0.08] hover:border-[#06B6D4]/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs font-mono text-[#06B6D4]">
+                      0{index + 1}
+                    </span>
+                    <h4 className="font-display text-lg sm:text-xl font-bold text-white">
+                      {leader.name}
+                    </h4>
+                  </div>
+                  <p className="text-sm font-medium text-[#60A5FA]">
+                    {leader.position}
+                  </p>
+                  {leader.additionalDesignation && (
+                    <p className="text-xs sm:text-sm text-[#A1AAB8]">
+                      {leader.additionalDesignation}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
+                  <a
+                    href={`tel:${leader.phone}`}
+                    aria-label={`Call ${leader.name} at ${leader.phone}`}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#070B14] hover:bg-[#111C32] border border-white/10 hover:border-[#06B6D4]/40 text-xs sm:text-sm font-semibold text-white transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />
+                    <span>{leader.phone}</span>
+                  </a>
+                  <span className="text-[11px] font-mono text-[#A1AAB8]">
+                    {leader.contactType}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Business Registration (Udyam Number) */}
+          <div className="pt-2 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-[#A1AAB8]">
+              <ShieldCheck className="w-4 h-4 text-[#06B6D4] shrink-0" />
+              <span>Business Registration &mdash; Udyam Registration Number:</span>
+            </div>
+            <span className="font-mono font-semibold text-white bg-[#0B1220] px-3.5 py-1.5 rounded-lg border border-[#06B6D4]/30 w-fit">
+              {founder.businessRegistration.udyamNumber}
+            </span>
+          </div>
+        </motion.div>
+
         {/* Main Founder Profile Layout */}
-        <div className="mt-14 lg:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="mt-10 lg:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Premium Founder Photograph Placeholder / Portrait Card */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -150,14 +219,12 @@ export const FounderSection: React.FC = () => {
                   </a>
 
                   <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Chat with ${founder.name} on WhatsApp at ${contact.whatsappDisplay}`}
+                    href={`tel:${contact.mobile}`}
+                    aria-label={`Call ${founder.name} at ${contact.mobile}`}
                     className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#0B1220] hover:bg-[#111C32] border border-white/10 hover:border-[#06B6D4]/40 text-xs font-semibold text-white transition-colors"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#06B6D4]" />
-                    <span>{contact.whatsappDisplay}</span>
+                    <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />
+                    <span>{contact.mobile} (Calling only)</span>
                   </a>
                 </div>
               </div>

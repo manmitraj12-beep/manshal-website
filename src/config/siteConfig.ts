@@ -110,6 +110,25 @@ export const SITE_CONFIG = {
       linkedin: 'https://www.linkedin.com/in/manmitraj-raj-b859b5396/',
       github: 'https://github.com/manmitraj12-beep',
     },
+    leadership: [
+      {
+        name: 'Shailesh Sir',
+        position: 'Partner, MANSHAL',
+        additionalDesignation: 'Founder of Sky Group of Education',
+        phone: '8873302064',
+        contactType: 'Calling only',
+      },
+      {
+        name: 'Manmit Raj',
+        position: 'Founder & Developer, MANSHAL',
+        additionalDesignation: '',
+        phone: '9014792021',
+        contactType: 'Calling only',
+      },
+    ],
+    businessRegistration: {
+      udyamNumber: 'UDYAM-BR-0090291',
+    },
   },
 
   /**
