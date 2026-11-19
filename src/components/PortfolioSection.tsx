@@ -293,12 +293,12 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onInquirePro
           </AnimatePresence>
         </div>
 
-        {/* Editable Portfolio Note */}
+        {/* Transparent Portfolio Note */}
         <div className="mt-10 rounded-xl p-4 sm:px-6 bg-[#070B14]/80 border border-white/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#A1AAB8]">
           <div className="flex items-center gap-2.5">
             <Code2 className="w-4 h-4 text-[#06B6D4] shrink-0" />
             <span>
-              <strong className="text-white">Transparent Portfolio Structure:</strong> Completed client projects, academic ML studies and IoT concepts are clearly separated and managed in <code className="text-[#06B6D4]">src/config/siteConfig.ts</code>.
+              <strong className="text-white">Transparent Portfolio Structure:</strong> Completed client projects, academic ML studies and technical IoT concepts are clearly separated.
             </span>
           </div>
           <a

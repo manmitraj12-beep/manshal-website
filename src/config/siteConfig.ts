@@ -545,4 +545,81 @@ export const SITE_CONFIG = {
     'AI / Machine Learning or Custom Software',
     'Website Redesign / Ongoing Maintenance',
   ],
+
+  /**
+   * ANALYTICS & CONVERSION TRACKING CONFIGURATION
+   * Leave empty ('') until your real Google Analytics 4 Measurement ID or
+   * Google Ads Conversion ID is ready. No dummy IDs are used.
+   */
+  analytics: {
+    gaMeasurementId: '',
+    googleAdsConversionId: '',
+  },
+
+  /**
+   * PRIVACY POLICY & TERMS OF SERVICE (For Paid Ads & Lead Generation Compliance)
+   */
+  legal: {
+    lastUpdated: 'November 2026',
+    privacyPolicy: [
+      {
+        heading: '1. Information We Collect',
+        body: 'When you submit a project enquiry through the MANSHAL website or contact us via Email, Phone, or WhatsApp, we collect only the information you voluntarily provide: your Full Name, Email Address, Mobile Number, Selected Service, Optional Budget Scope, and Project Description.',
+      },
+      {
+        heading: '2. How We Use Your Information',
+        body: 'Your contact and project details are used strictly to review your requirements, respond to your enquiry, prepare project proposals, and communicate with you regarding MANSHAL services. We never sell, rent, or trade your personal information to third parties.',
+      },
+      {
+        heading: '3. Data Confidentiality & Security',
+        body: 'All project ideas, business requirements, and contact details shared with MANSHAL are treated as confidential. Only authorized leadership (Manmit Raj and Shailesh Sir) access client enquiries.',
+      },
+      {
+        heading: '4. Third-Party Services & Analytics',
+        body: 'When you choose to contact us via WhatsApp (+91 9014792021) or your email provider (manmitraj12@gmail.com), your communication is transmitted through those respective platforms. If web analytics or form endpoint services are enabled, they process anonymized traffic or enquiry delivery strictly on our behalf.',
+      },
+      {
+        heading: '5. Contact & Data Requests',
+        body: 'You may request access to, correction of, or deletion of your enquiry details at any time by emailing manmitraj12@gmail.com or calling +91 9014792021.',
+      },
+    ],
+    termsOfService: [
+      {
+        heading: '1. Overview & Services',
+        body: 'MANSHAL provides website development, custom software development, mobile application development, e-commerce solutions, AI/ML exploration, and website redesign/maintenance services for clients in India and internationally.',
+      },
+      {
+        heading: '2. Project Proposals & Scope',
+        body: 'Submitting an enquiry through this website does not create a binding contract. Every project begins with a discovery discussion followed by a written scope of work, timeline, and milestone agreement mutually approved before development starts.',
+      },
+      {
+        heading: '3. Intellectual Property',
+        body: 'All MANSHAL branding, logos, and original website content on this site belong to MANSHAL. Portfolio items clearly distinguish completed client projects from independent academic and technical concept projects.',
+      },
+      {
+        heading: '4. Direct Contact',
+        body: 'For official project communications, please contact Founder & Developer Manmit Raj at manmitraj12@gmail.com or +91 9014792021, or Partner Shailesh Sir at +91 8873302064.',
+      },
+    ],
+  },
 };
+
+/**
+ * Safe conversion tracking helper.
+ * Fires GA4 / Google Ads / GTM dataLayer events only when analytics is configured on the page.
+ */
+export function trackConversionEvent(
+  eventName: 'generate_lead' | 'whatsapp_click' | 'phone_call_click' | 'email_click',
+  params?: Record<string, string>
+) {
+  if (typeof window === 'undefined') return;
+  const win = window as unknown as {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: Record<string, unknown>[];
+  };
+  if (typeof win.gtag === 'function') {
+    win.gtag('event', eventName, params || {});
+  } else if (Array.isArray(win.dataLayer)) {
+    win.dataLayer.push({ event: eventName, ...params });
+  }
+}

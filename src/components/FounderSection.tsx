@@ -10,7 +10,7 @@ import {
   Phone,
   ShieldCheck,
 } from 'lucide-react';
-import { SITE_CONFIG } from '../config/siteConfig';
+import { SITE_CONFIG, trackConversionEvent } from '../config/siteConfig';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
 import { BrandLogo } from './BrandLogo';
 
@@ -108,8 +108,14 @@ export const FounderSection: React.FC = () => {
 
                 <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
                   <a
-                    href={`tel:${leader.phone}`}
-                    aria-label={`Call ${leader.name} at ${leader.phone}`}
+                    href={`tel:+91${leader.phone}`}
+                    onClick={() =>
+                      trackConversionEvent('phone_call_click', {
+                        leader: leader.name,
+                        phone: `+91${leader.phone}`,
+                      })
+                    }
+                    aria-label={`Call ${leader.name} at +91 ${leader.phone}`}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#070B14] hover:bg-[#111C32] border border-white/10 hover:border-[#06B6D4]/40 text-xs sm:text-sm font-semibold text-white transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />
@@ -127,7 +133,7 @@ export const FounderSection: React.FC = () => {
           <div className="pt-2 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm">
             <div className="flex items-center gap-2 text-[#A1AAB8]">
               <ShieldCheck className="w-4 h-4 text-[#06B6D4] shrink-0" />
-              <span>Business Registration &mdash; Udyam Registration Number:</span>
+              <span>Udyam Registration Number:</span>
             </div>
             <span className="font-mono font-semibold text-white bg-[#0B1220] px-3.5 py-1.5 rounded-lg border border-[#06B6D4]/30 w-fit">
               {founder.businessRegistration.udyamNumber}
@@ -194,8 +200,7 @@ export const FounderSection: React.FC = () => {
                     </div>
 
                     <div className="px-3 py-1.5 rounded-lg bg-[#0B1220]/90 border border-white/10 text-[11px] font-mono text-[#A1AAB8]">
-                      Founder Photograph Placeholder &bull; Configurable in{' '}
-                      <code className="text-[#06B6D4]">siteConfig.ts</code>
+                      Founder &amp; Developer &bull; <span className="text-[#06B6D4]">MANSHAL</span>
                     </div>
                   </div>
                 )}
@@ -211,6 +216,9 @@ export const FounderSection: React.FC = () => {
                 <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <a
                     href={`mailto:${contact.email}`}
+                    onClick={() =>
+                      trackConversionEvent('email_click', { location: 'founder_section' })
+                    }
                     aria-label={`Send an email to ${founder.name} at ${contact.email}`}
                     className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#0B1220] hover:bg-[#111C32] border border-white/10 hover:border-[#06B6D4]/40 text-xs font-semibold text-white transition-colors"
                   >
@@ -219,8 +227,14 @@ export const FounderSection: React.FC = () => {
                   </a>
 
                   <a
-                    href={`tel:${contact.mobile}`}
-                    aria-label={`Call ${founder.name} at ${contact.mobile}`}
+                    href={`tel:+91${contact.mobile}`}
+                    onClick={() =>
+                      trackConversionEvent('phone_call_click', {
+                        leader: founder.name,
+                        phone: `+91${contact.mobile}`,
+                      })
+                    }
+                    aria-label={`Call ${founder.name} at +91 ${contact.mobile}`}
                     className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#0B1220] hover:bg-[#111C32] border border-white/10 hover:border-[#06B6D4]/40 text-xs font-semibold text-white transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#06B6D4]" />

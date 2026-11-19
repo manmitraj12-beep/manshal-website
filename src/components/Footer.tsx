@@ -1,11 +1,22 @@
-import React from 'react';
-import { Mail, MessageCircle, Phone, ArrowUp } from 'lucide-react';
-import { SITE_CONFIG } from '../config/siteConfig';
+import React, { useState, useEffect } from 'react';
+import { Mail, MessageCircle, Phone, ArrowUp, X, ShieldCheck, FileText } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SITE_CONFIG, trackConversionEvent } from '../config/siteConfig';
 import { BrandLogo } from './BrandLogo';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [legalModalTab, setLegalModalTab] = useState<'privacy' | 'terms' | null>(null);
+
+  useEffect(() => {
+    const handleOpenLegal = (e: Event) => {
+      const customEvent = e as CustomEvent<'privacy' | 'terms'>;
+      setLegalModalTab(customEvent.detail || 'privacy');
+    };
+    window.addEventListener('open-manshal-legal', handleOpenLegal);
+    return () => window.removeEventListener('open-manshal-legal', handleOpenLegal);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -153,6 +164,9 @@ export const Footer: React.FC = () => {
             <div className="space-y-2.5 text-sm text-[#A1AAB8]">
               <a
                 href={`mailto:${SITE_CONFIG.contact.email}`}
+                onClick={() =>
+                  trackConversionEvent('email_click', { location: 'footer' })
+                }
                 aria-label={`Email ${SITE_CONFIG.contact.email}`}
                 className="flex items-center gap-2.5 hover:text-white transition-colors break-all"
               >
@@ -162,6 +176,9 @@ export const Footer: React.FC = () => {
 
               <a
                 href={`tel:+91${SITE_CONFIG.contact.mobile}`}
+                onClick={() =>
+                  trackConversionEvent('phone_call_click', { location: 'footer' })
+                }
                 aria-label={`Call ${SITE_CONFIG.contact.mobileFormatted}`}
                 className="flex items-center gap-2.5 hover:text-white transition-colors"
               >
@@ -173,6 +190,9 @@ export const Footer: React.FC = () => {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackConversionEvent('whatsapp_click', { location: 'footer' })
+                }
                 aria-label={`WhatsApp ${SITE_CONFIG.contact.whatsappDisplay}`}
                 className="flex items-center gap-2.5 hover:text-white transition-colors"
               >
@@ -183,16 +203,33 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Copyright & Back to Top Bar */}
+        {/* Bottom Copyright, Privacy Policy / Terms & Back to Top Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A1AAB8]">
-          <div>
-            &copy; {currentYear} <strong className="text-white">{SITE_CONFIG.brand.name}</strong> &bull; Founded by <strong className="text-white">{SITE_CONFIG.founder.name}</strong>. All rights reserved.
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2">
+            <span>
+              &copy; {currentYear} <strong className="text-white">{SITE_CONFIG.brand.name}</strong> &bull; Founded by <strong className="text-white">{SITE_CONFIG.founder.name}</strong>. All rights reserved.
+            </span>
+            <span className="hidden sm:inline text-white/20">|</span>
+            <button
+              type="button"
+              onClick={() => setLegalModalTab('privacy')}
+              className="text-[#A1AAB8] hover:text-[#06B6D4] underline underline-offset-4 transition-colors"
+            >
+              Privacy Policy
+            </button>
+            <button
+              type="button"
+              onClick={() => setLegalModalTab('terms')}
+              className="text-[#A1AAB8] hover:text-[#06B6D4] underline underline-offset-4 transition-colors"
+            >
+              Terms of Service
+            </button>
           </div>
 
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#070B14] border border-white/10 text-[#A1AAB8] hover:text-white hover:border-[#06B6D4]/40 transition-colors"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#070B14] border border-white/10 text-[#A1AAB8] hover:text-white hover:border-[#06B6D4]/40 transition-colors shrink-0"
             aria-label="Scroll back to top"
           >
             <span>Back to top</span>
@@ -200,6 +237,110 @@ export const Footer: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {/* Privacy Policy & Terms of Service Modal */}
+      <AnimatePresence>
+        {legalModalTab && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+            onClick={() => setLegalModalTab(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0, y: 16 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 16 }}
+              transition={{ duration: 0.22 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-2xl rounded-2xl bg-[#0B1220] border border-white/15 shadow-2xl overflow-hidden my-8"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-6 py-4 bg-[#070B14] border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setLegalModalTab('privacy')}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                      legalModalTab === 'privacy'
+                        ? 'bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white'
+                        : 'text-[#A1AAB8] hover:text-white bg-white/[0.04]'
+                    }`}
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Privacy Policy</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLegalModalTab('terms')}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                      legalModalTab === 'terms'
+                        ? 'bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white'
+                        : 'text-[#A1AAB8] hover:text-white bg-white/[0.04]'
+                    }`}
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Terms of Service</span>
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setLegalModalTab(null)}
+                  className="p-1.5 rounded-lg bg-white/[0.05] text-[#A1AAB8] hover:text-white transition-colors"
+                  aria-label="Close legal information modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6 sm:p-8 max-h-[75vh] overflow-y-auto space-y-5">
+                <div className="space-y-1">
+                  <h3 className="font-display text-2xl font-bold text-white">
+                    {legalModalTab === 'privacy'
+                      ? 'MANSHAL Privacy Policy'
+                      : 'MANSHAL Terms of Service'}
+                  </h3>
+                  <p className="text-xs font-mono text-[#06B6D4]">
+                    Last Updated: {SITE_CONFIG.legal.lastUpdated}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {(legalModalTab === 'privacy'
+                    ? SITE_CONFIG.legal.privacyPolicy
+                    : SITE_CONFIG.legal.termsOfService
+                  ).map((section) => (
+                    <div
+                      key={section.heading}
+                      className="p-4 rounded-xl bg-[#070B14] border border-white/[0.07] space-y-1.5"
+                    >
+                      <h4 className="font-display text-sm sm:text-base font-semibold text-white">
+                        {section.heading}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#A1AAB8] leading-relaxed">
+                        {section.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex items-center justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setLegalModalTab(null)}
+                    className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#06B6D4]"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };

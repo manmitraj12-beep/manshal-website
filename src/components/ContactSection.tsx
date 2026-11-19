@@ -11,8 +11,9 @@ import {
   ExternalLink,
   Copy,
   Check,
+  ShieldCheck,
 } from 'lucide-react';
-import { SITE_CONFIG } from '../config/siteConfig';
+import { SITE_CONFIG, trackConversionEvent } from '../config/siteConfig';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
 
 interface ContactSectionProps {
@@ -89,6 +90,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
       });
 
       if (response.ok) {
+        trackConversionEvent('generate_lead', {
+          method: 'form_endpoint',
+          service: serviceRequired,
+        });
         setStatus('submitted');
         setFullName('');
         setEmail('');
@@ -106,6 +111,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
   };
 
   const handleWhatsAppClick = () => {
+    trackConversionEvent('whatsapp_click', {
+      location: 'contact_section',
+      service: serviceRequired,
+    });
     const encodedText = encodeURIComponent(buildStructuredMessage());
     window.open(
       `https://wa.me/${SITE_CONFIG.contact.whatsappNumber}?text=${encodedText}`,
@@ -115,6 +124,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
   };
 
   const handleMailtoFallback = () => {
+    trackConversionEvent('generate_lead', {
+      method: 'mailto_dispatch',
+      service: serviceRequired,
+    });
     const subject = encodeURIComponent(
       `Project Enquiry: ${serviceRequired} — ${fullName || 'MANSHAL Website'}`
     );
@@ -211,6 +224,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                     </div>
                     <a
                       href={`mailto:${SITE_CONFIG.contact.email}`}
+                      onClick={() =>
+                        trackConversionEvent('email_click', { location: 'contact_card' })
+                      }
                       aria-label={`Email ${SITE_CONFIG.contact.founderName} at ${SITE_CONFIG.contact.email}`}
                       className="text-sm font-semibold text-white hover:text-[#06B6D4] break-all transition-colors"
                     >
@@ -245,6 +261,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                     </div>
                     <a
                       href={`tel:+91${SITE_CONFIG.contact.mobile}`}
+                      onClick={() =>
+                        trackConversionEvent('phone_call_click', { location: 'contact_card' })
+                      }
                       aria-label={`Call ${SITE_CONFIG.contact.mobileFormatted}`}
                       className="text-sm font-semibold text-white hover:text-[#06B6D4] transition-colors"
                     >
@@ -268,6 +287,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                       href={directWhatsAppHref}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackConversionEvent('whatsapp_click', { location: 'contact_card' })
+                      }
                       aria-label={`Chat on WhatsApp at ${SITE_CONFIG.contact.whatsappDisplay}`}
                       className="text-sm font-semibold text-white hover:text-[#06B6D4] transition-colors"
                     >
@@ -279,6 +301,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                   href={directWhatsAppHref}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackConversionEvent('whatsapp_click', { location: 'contact_card_button' })
+                  }
                   aria-label="Open WhatsApp chat"
                   className="px-3.5 py-1.5 rounded-lg bg-[#06B6D4]/15 hover:bg-[#06B6D4]/25 text-xs font-semibold text-[#06B6D4] transition-colors shrink-0"
                 >
@@ -469,17 +494,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                 />
               </div>
 
-              {/* Honest Backend Status Notice */}
+              {/* Client-Friendly Direct Dispatch Notice (Honest: Never fakes server submission when formEndpoint is empty) */}
               {status === 'backend_not_configured' && (
                 <div className="p-4 rounded-xl bg-[#070B14] border border-[#06B6D4]/40 space-y-3">
                   <div className="flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-[#06B6D4] shrink-0 mt-0.5" />
                     <div className="space-y-1 text-xs sm:text-sm">
                       <div className="font-semibold text-white">
-                        Direct Dispatch Ready (Backend Endpoint Optional)
+                        Enquiry Formatted &amp; Ready — Select Your Preferred Channel
                       </div>
                       <p className="text-[#A1AAB8] leading-relaxed">
-                        A server form endpoint (<code className="text-[#06B6D4]">formEndpoint</code> in <code className="text-[#06B6D4]">siteConfig.ts</code>) is not yet connected, so no fake submission confirmation is shown. Send your filled enquiry directly to <strong className="text-white">{SITE_CONFIG.contact.email}</strong> or <strong className="text-white">{SITE_CONFIG.contact.whatsappDisplay}</strong> with one click:
+                        Your project details are prepared. To complete your enquiry, dispatch your message directly to <strong className="text-white">{SITE_CONFIG.contact.email}</strong> or <strong className="text-white">WhatsApp ({SITE_CONFIG.contact.whatsappDisplay})</strong> below:
                       </p>
                     </div>
                   </div>
@@ -536,6 +561,25 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedService 
                 >
                   <MessageCircle className="w-4 h-4 text-[#06B6D4]" />
                   <span>Contact on WhatsApp</span>
+                </button>
+              </div>
+
+              {/* Confidentiality & Privacy Policy Reassurance Note */}
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[#A1AAB8]">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                  <span>Your project details are kept strictly confidential.</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent('open-manshal-legal', { detail: 'privacy' })
+                    )
+                  }
+                  className="text-[#06B6D4] hover:text-white underline underline-offset-4 transition-colors"
+                >
+                  Privacy Policy
                 </button>
               </div>
             </form>
